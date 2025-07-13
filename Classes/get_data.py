@@ -25,9 +25,3 @@ class GetData:
     
     def get_dict_unique_val(self):
         return self.dict_unique_val
-    
-
-   
-    
-
-    

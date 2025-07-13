@@ -1,5 +1,5 @@
 import pandas as pd
-from get_data import GetData
+from Classes.get_data import GetData
 from fastapi import FastAPI
 
 app = FastAPI()
