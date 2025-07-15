@@ -10,7 +10,7 @@ def main():
     flag = True
 
     while flag:
-        result_values = ui.enter_situations()
+        result_values = ui.enter_situations() # User choices
         result_dict = dict(zip(trainer.feature, result_values))
 
         prediction, stats = classifier.classify_with_stats(result_dict)

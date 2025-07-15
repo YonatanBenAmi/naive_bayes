@@ -13,13 +13,10 @@ class Evaluator:
 
     # <<<<< Split DataFrame to train and test sets >>>>>
     def split_data(self):
-        # ערבוב הנתונים
         shuffled_df = self.df.sample(frac=1, random_state=1).reset_index(drop=True)
 
-        # חישוב כמות רשומות עבור ה-train set לפי היחס
         train_size = int(len(shuffled_df) * self.train_ratio)
 
-        # חלוקה ל-train ו-test
         train_set = shuffled_df.iloc[:train_size]
         test_set = shuffled_df.iloc[train_size:]
 
@@ -28,9 +25,7 @@ class Evaluator:
     # <<<<< Evaluate classifier accuracy >>>>>
     def evaluate(self):
         train_set, test_set = self.split_data()
-
-        # מאמן את המודל על ה-train_set
-        trainer = Trainer(train_set)  # תומך ב-DataFrame כפרמטר
+        trainer = Trainer(train_set)
         classifier = Classifier(trainer)
 
         correct = 0
@@ -44,7 +39,6 @@ class Evaluator:
 
     # <<<<< Test a single example and return True if prediction is correct >>>>>
     def test_example(self, classifier, row):
-        # יוצרים dict של תכונות בלבד (בלי התוצאה)
         example = row.iloc[:-1].to_dict()
         actual = row.iloc[-1]
 
