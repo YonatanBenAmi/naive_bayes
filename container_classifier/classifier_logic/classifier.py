@@ -1,9 +1,13 @@
+import requests
+
 class Classifier:
-    def __init__(self, trainer):
+    
+    def __init__(self):
         # <<<<< Getting trainer data >>>>>
-        self.statistics = trainer.dict_statistics
-        self.feature = trainer.feature
-        self.dict_unique_val = trainer.dict_unique_val
+        respons = requests.get('http://127.0.0.1:8000/get_trainer')
+        self.statistics = respons.json()
+        self.feature = requests.get('http://127.0.0.1:8000/other_column').json()
+        self.dict_unique_val = requests.get('http://127.0.0.1:8000/uniqe_val').json()
 
     # <<<<< Result answer >>>>>
     def classify(self, user_choices):

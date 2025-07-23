@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 from server.classes.get_data import GetData
-from server.classes.classifier import Classifier
+from container_classifier.classifier_logic.classifier import Classifier
 from server.classes.data_trainer import Trainer
 
 get_data = GetData()
 trainer = Trainer()
-classifier = Classifier(trainer)
 app = FastAPI()
 
 
@@ -25,10 +24,6 @@ def last_column() -> list:
 def other_column() -> list:
     return get_data.get_other_columns()
 
-@app.post('/classify')
-def classify(request:dict):
-    result =  classifier.classify_with_stats(request)
-    return result
-
-
-
+@app.get('/get_trainer')
+def get_trainer():
+    return trainer.dict_statistics
