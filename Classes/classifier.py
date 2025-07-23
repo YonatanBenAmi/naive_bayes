@@ -7,17 +7,19 @@ class Classifier:
 
     # <<<<< Result answer >>>>>
     def classify(self, user_choices):
-        results = self._calculate_probabilities(user_choices)
+        results = self.calculate_probabilities(user_choices)
         return max(results, key=results.get)
 
     # <<<<< Result answer + statistics >>>>>
     def classify_with_stats(self, user_choices):
-        results = self._calculate_probabilities(user_choices)  # dict(possible answer : statistics)
+        results = self.calculate_probabilities(user_choices)  # dict(possible answer : statistics)
         prediction = max(results, key=results.get)
-        return prediction, results
+        return {
+            "prediction": prediction, "results": results
+        }
 
     # <<<<< Calculating statistics for user choices >>>>>
-    def _calculate_probabilities(self, user_choices):
+    def calculate_probabilities(self, user_choices):
         results = {}
         for category in self.statistics:  # category = possible answer.
             probability = 1

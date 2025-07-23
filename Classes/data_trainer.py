@@ -5,27 +5,22 @@ from Classes.get_data import GetData
 class Trainer:
     def __init__(self, df=None):
         # <<<<< Creating an instance >>>>>.
+        get_data = GetData()
         if df is None:
-            get_data = GetData()
-            # <<<<< Variables for DataFrame >>>>>
             self.df = get_data.get_df()  # Full DataFrame.
         else:
             self.df = df
 
         # <<<<< Variables for DataFrame >>>>>
-        self.feature = self.df.columns[:-1]  # The other columns.
-        self.dict_unique_val = {}  # A dictionary that holds all the unique values ​​for each column.
-
-        for col in self.feature:  # Enter values for dict_unique_val(Variable).
-            # Use list() on unique() to store the unique values for each column
-            self.dict_unique_val[col] = list(self.df[col].unique())
+        self.feature = get_data.get_other_columns()  # The other columns.
+        self.dict_unique_val = get_data.get_dict_unique_val()  # A dictionary that holds all the unique values ​​for each column.
 
         # <<<<< Variables for sub DataFrame >>>>>
         self.sub_df = self.df.groupby(self.df.columns[-1])  # Group DataFrame by last column.
         self.dict_statistics = {}  # Dictionary with statistics for each column.
 
         # <<<<< Filling dictionaries >>>>>
-        for key, sub_group in self.sub_df:  # Enter values for dict_statistics(Variable).
+        for key, sub_group in self.sub_df:  # Enter statistics for dict_statistics(Variable).
             self.dict_statistics[key] = {}
 
             for col in self.feature:
