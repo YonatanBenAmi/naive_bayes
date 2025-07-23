@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from Classes.get_data import GetData
-from Classes.classifier import Classifier
-from Classes.data_trainer import Trainer
+from server.classes.get_data import GetData
+from server.classes.classifier import Classifier
+from server.classes.data_trainer import Trainer
 
 get_data = GetData()
 trainer = Trainer()
@@ -28,7 +28,6 @@ def other_column() -> list:
 @app.post('/classify')
 def classify(request:dict):
     result =  classifier.classify_with_stats(request)
-    print(result)
     return result
 
 

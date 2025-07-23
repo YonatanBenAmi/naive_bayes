@@ -2,7 +2,7 @@ import pandas as pd
 
 class GetData:
 
-    csv_file = "Data/data.csv"  # class attribute
+    csv_file = "data/data.csv"  # class attribute
     df = pd.read_csv(csv_file)
     feature = df.columns[:-1]
     dict_unique_val = {} # A dictionary that holds all the unique values ​​for each column.

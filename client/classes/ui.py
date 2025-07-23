@@ -1,4 +1,3 @@
-from Classes.get_data import GetData
 import requests
 
 class UI:

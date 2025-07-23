@@ -1,6 +1,6 @@
 
 import json
-from Classes.ui import UI      
+from classes.ui import UI      
 import requests        
 
 def main():
