@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from server.classes.get_data import GetData
+from container_app.classes.get_data import GetData
 from container_classifier.classifier_logic.classifier import Classifier
-from server.classes.data_trainer import Trainer
+from container_app.classes.data_trainer import Trainer
 
 get_data = GetData()
 trainer = Trainer()
