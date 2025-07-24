@@ -1,5 +1,5 @@
 import pandas as pd
-from server.classes.get_data import GetData 
+from container_app.classes.get_data import GetData 
 
 
 class Trainer:
