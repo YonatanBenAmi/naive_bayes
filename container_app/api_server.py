@@ -26,6 +26,6 @@ def last_column() -> list:
 def other_column() -> list:
     return get_data.get_other_columns()
 
-@app.get('/get_trainer')
+@app.get("/get_trainer")
 def get_trainer():
     return trainer.dict_statistics

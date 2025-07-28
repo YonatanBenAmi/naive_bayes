@@ -7,7 +7,7 @@ class Classifier:
         respons = requests.get('http://naiveBaseApp:8000/get_trainer')
         self.statistics = respons.json()
         self.feature = requests.get('http://naiveBaseApp:8000/other_column').json()
-        self.dict_unique_val = requests.get('http:/naiveBaseApp:8000/uniqe_val').json()
+        self.dict_unique_val = requests.get('http://naiveBaseApp:8000/uniqe_val').json()
 
     # <<<<< Result answer >>>>>
     def classify(self, user_choices):
@@ -16,6 +16,7 @@ class Classifier:
 
     # <<<<< Result answer + statistics >>>>>
     def classify_with_stats(self, user_choices):
+        print("user_choices", user_choices)
         results = self.calculate_probabilities(user_choices)  # dict(possible answer : statistics)
         prediction = max(results, key=results.get)
         return {
