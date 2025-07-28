@@ -4,10 +4,10 @@ class Classifier:
     
     def __init__(self):
         # <<<<< Getting trainer data >>>>>
-        respons = requests.get('http://127.0.0.1:8000/get_trainer')
+        respons = requests.get('http://naiveBaseApp:8000/get_trainer')
         self.statistics = respons.json()
-        self.feature = requests.get('http://127.0.0.1:8000/other_column').json()
-        self.dict_unique_val = requests.get('http://127.0.0.1:8000/uniqe_val').json()
+        self.feature = requests.get('http://naiveBaseApp:8000/other_column').json()
+        self.dict_unique_val = requests.get('http:/naiveBaseApp:8000/uniqe_val').json()
 
     # <<<<< Result answer >>>>>
     def classify(self, user_choices):

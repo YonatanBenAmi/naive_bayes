@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from container_app.classes.get_data import GetData
-from container_classifier.classifier_logic.classifier import Classifier
 from container_app.classes.data_trainer import Trainer
+
+# run via docker with command:
+# docker run -d --name naiveBaseApp --network myNetwork -p 8000:8000 my-fastapi-app
 
 get_data = GetData()
 trainer = Trainer()
